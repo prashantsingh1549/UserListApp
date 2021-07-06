@@ -18,9 +18,12 @@ class App extends React.Component {
       console.warn(error);
     }
   }
+  componentDidUpdate(){
+    this.componentDidMount();
+  }
   setcurrentPage = async (value) => {
     try {
-      const data1 = await axios.get('https://reqres.in/api/users?page=' + value)
+      const data1 = await axios.get('https://reqres.in/api/users?page=' + value);
       this.setState({ Data: data1.data.data, pageData: data1.data.total_pages });
     } catch (error) {
       console.warn(error);
